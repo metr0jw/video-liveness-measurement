@@ -108,7 +108,7 @@ def compare_imagesC(imageA, imageB, title):
     '''
 
 
-for file_count in range(1, cpt - 1):
+for file_count in range(1, cpt - 2):
     # load the images
     first = cv2.imread("ITZY/itzy_image" + str(file_count) + ".png")
     second = cv2.imread("ITZY/itzy_image" + str(file_count + 1) + ".png")
