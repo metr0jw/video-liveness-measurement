@@ -10,7 +10,7 @@ def getFrame(sec):
 
 
 sec = 0
-frameRate = 1/30 # it will capture image in each 0.5 second
+frameRate = 1/24
 count = 1
 success = getFrame(sec)
 while success:
