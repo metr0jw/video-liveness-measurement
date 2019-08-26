@@ -34,18 +34,18 @@ y_predict = clf.fit_predict(X)
 y_predict_scaled = list()
 for idx in range(len(y_predict)):
     if y_predict[idx] == 0:
-        y_predict_scaled.append(0.5)
-    elif y_predict[idx] == 1:
-        y_predict_scaled.append(1)
-    elif y_predict[idx] == 2:
         y_predict_scaled.append(0)
+    elif y_predict[idx] == 1:
+        y_predict_scaled.append(0.5)
+    elif y_predict[idx] == 2:
+        y_predict_scaled.append(1)
 
 plt.figure(figsize=(20, 20))
 plt.xticks(np.arange(0, len(activeness_scaled), 5))
 plt.plot(activeness_scaled, label="Activeness")
-plt.figure(figsize=(20, 20))
-plt.xticks(np.arange(0, len(activeness_scaled), 5))
-plt.plot(activeness_scaled)
+plt.legend()
 plt.savefig('data_itzy.png', bbox_inches='tight')
 plt.plot(y_predict_scaled, ls="-.", label="Cluster")
+plt.legend()
 plt.savefig('prediction_itzy.png', bbox_inches='tight')
+pd.DataFrame(y_predict_scaled).to_csv("y_prediction_itzy.csv")
