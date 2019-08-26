@@ -109,7 +109,7 @@ def compare_imagesC(imageA, imageB, title):
     #plt.show()
     '''
 
-for file_count in range(1, cpt-2):
+for file_count in range(0, cpt-3):
     # load the images
     first = cv2.imread("BTS/bts_image"+str(file_count)+".png")
     second = cv2.imread("BTS/bts_image"+str(file_count+1)+".png")
@@ -146,10 +146,7 @@ df_m23 = pd.DataFrame(m23)
 df_s23 = pd.DataFrame(s23)
 df_m13 = pd.DataFrame(m13)
 df_s13 = pd.DataFrame(s13)
+df_concat = pd.concat([df_m12, df_m23, df_m13, df_s12, df_s23, df_s13], axis=1)
 
-df_m12.to_csv("m12.csv", mode='w', header=False)
-df_s12.to_csv("s12.csv", mode='w', header=False)
-df_m23.to_csv("m23.csv", mode='w', header=False)
-df_s23.to_csv("s23.csv", mode='w', header=False)
-df_m13.to_csv("m13.csv", mode='w', header=False)
-df_s13.to_csv("s13.csv", mode='w', header=False)
+df_concat.to_csv("data_bts.csv", mode='w', header=False)
+print("DONE")
