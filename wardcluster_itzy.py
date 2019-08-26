@@ -31,10 +31,21 @@ X = pd.DataFrame(activeness_scaled)
 clf = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='ward')
 clf.fit(X)
 y_predict = clf.fit_predict(X)
+y_predict_scaled = list()
+for idx in range(len(y_predict)):
+    if y_predict[idx] == 0:
+        y_predict_scaled.append(0.5)
+    elif y_predict[idx] == 1:
+        y_predict_scaled.append(1)
+    elif y_predict[idx] == 2:
+        y_predict_scaled.append(0)
 
+plt.figure(figsize=(20, 20))
+plt.xticks(np.arange(0, len(activeness_scaled), 5))
+plt.plot(activeness_scaled, label="Activeness")
 plt.figure(figsize=(20, 20))
 plt.xticks(np.arange(0, len(activeness_scaled), 5))
 plt.plot(activeness_scaled)
 plt.savefig('data_itzy.png', bbox_inches='tight')
-plt.plot(y_predict/2)
+plt.plot(y_predict_scaled, ls="-.", label="Cluster")
 plt.savefig('prediction_itzy.png', bbox_inches='tight')
